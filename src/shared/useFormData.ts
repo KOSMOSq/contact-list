@@ -9,7 +9,7 @@ const useFormData = <TData extends object>(initialValue: TData) => {
             [name]: value
         }));
     };
-    return [formData, changeFormData] as const;
+    return [formData, changeFormData, setFormData] as const;
 };
 
 export { useFormData };
