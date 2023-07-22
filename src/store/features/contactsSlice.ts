@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit/dist/createAction";
 
-export interface Contacts {
+export interface IContacts {
     id: string;
     name: string;
     mail: string;
 }
 
 export interface ContactsState {
-    contacts: Contacts[];
+    contacts: IContacts[];
     loading: boolean;
     error: null | string;
 }
@@ -23,7 +23,7 @@ export const ContactsSlice = createSlice({
     name: "contacts",
     initialState,
     reducers: {
-        addContact: (state, action: PayloadAction<Contacts>) => {
+        addContact: (state, action: PayloadAction<IContacts>) => {
             state.contacts.push(action.payload);
         },
         removeContact: (state, action: PayloadAction<string>) => {
@@ -32,7 +32,7 @@ export const ContactsSlice = createSlice({
                 contact => contact.id !== id
             );
         },
-        updateContact: (state, action: PayloadAction<Contacts>) => {
+        updateContact: (state, action: PayloadAction<IContacts>) => {
             state.contacts = state.contacts.map(contact =>
                 contact.id === action.payload.id
                     ? { ...contact, ...action.payload }

@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { generateUniqueId } from "../shared/generateIdFunc";
 import { useFormData } from "../shared/useFormData";
-import { Contacts, addContact } from "../store/features/contactsSlice";
+import { IContacts, addContact } from "../store/features/contactsSlice";
 import { useAppDispatch } from "../store/store";
 
 const AddForm: React.FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [formData, changeFormData] = useFormData<Contacts>({
+    const [formData, changeFormData] = useFormData<IContacts>({
         id: "",
         name: "",
         mail: ""
@@ -15,7 +15,7 @@ const AddForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const id = generateUniqueId();
-        const contactWithId: Contacts = { ...formData, id };
+        const contactWithId: IContacts = { ...formData, id };
         dispatch(addContact(contactWithId));
         navigate("/contacts");
     };
