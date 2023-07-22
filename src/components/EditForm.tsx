@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormData } from "../shared/useFormData";
-import { Contacts, updateContact } from "../store/features/contactsSlice";
+import { IContacts, updateContact } from "../store/features/contactsSlice";
 import {
     selectContactById,
     useAppDispatch,
@@ -12,7 +12,7 @@ const EditForm: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
-    const [formData, changeFormData, setFormDate] = useFormData<Contacts>({
+    const [formData, changeFormData, setFormDate] = useFormData<IContacts>({
         id: id as string,
         name: "",
         mail: ""
