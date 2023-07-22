@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { updateContact } from "../store/features/contactsSlice";
+import { useFormData } from "../shared/useFormData";
+import { Contacts, updateContact } from "../store/features/contactsSlice";
 import {
     selectContactById,
     useAppDispatch,
@@ -11,24 +12,30 @@ const EditForm: React.FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
-    const [name, setName] = useState("");
-    const [mail, setMail] = useState("");
+    const [formData, changeFormData, setFormDate] = useFormData<Contacts>({
+        id: id as string,
+        name: "",
+        mail: ""
+    });
     const contact = useAppSelector(state => selectContactById(state, id));
 
     const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (id) {
-            dispatch(updateContact({ id, name, mail }));
+            dispatch(updateContact(formData));
         }
         navigate("/contacts");
     };
 
     useEffect(() => {
         if (contact) {
-            setName(contact.name);
-            setMail(contact.mail);
+            setFormDate(prev => ({
+                ...prev,
+                name: contact.name,
+                mail: contact.mail
+            }));
         }
-    }, [contact]);
+    }, [contact, setFormDate]);
     return (
         <>
             <form
@@ -41,17 +48,19 @@ const EditForm: React.FC = () => {
                 <input
                     type="text"
                     id="name"
-                    value={name}
+                    name="name"
+                    value={formData.name}
                     required
-                    onChange={e => setName(e.target.value)}
+                    onChange={e => changeFormData(e)}
                 />
                 <label htmlFor="mail">Mail</label>
                 <input
                     type="email"
                     id="mail"
-                    value={mail}
+                    name="mail"
+                    value={formData.mail}
                     required
-                    onChange={e => setMail(e.target.value)}
+                    onChange={e => changeFormData(e)}
                 />
                 <button>Edit contact!</button>
             </form>
