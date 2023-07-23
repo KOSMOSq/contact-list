@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { updateContactById } from "../lib/controller";
 import { useFormData } from "../shared/useFormData";
 import { IContacts, updateContact } from "../store/features/contactsSlice";
 import {
@@ -22,6 +23,7 @@ const EditForm: React.FC = () => {
     const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (id) {
+            updateContactById(id, formData);
             dispatch(updateContact(formData));
         }
         navigate("/contacts");

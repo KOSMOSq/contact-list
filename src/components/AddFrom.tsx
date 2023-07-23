@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { addContactFirebase } from "../lib/controller";
 import { generateUniqueId } from "../shared/generateIdFunc";
 import { useFormData } from "../shared/useFormData";
 import { IContacts, addContact } from "../store/features/contactsSlice";
@@ -16,6 +17,7 @@ const AddForm: React.FC = () => {
         e.preventDefault();
         const id = generateUniqueId();
         const contactWithId: IContacts = { ...formData, id };
+        addContactFirebase(contactWithId);
         dispatch(addContact(contactWithId));
         navigate("/contacts");
     };
