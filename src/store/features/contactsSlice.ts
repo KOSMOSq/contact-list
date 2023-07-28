@@ -1,4 +1,5 @@
 import {
+    PayloadAction,
     SerializedError,
     createAsyncThunk,
     createSlice
@@ -42,9 +43,10 @@ export const fetchContacts = createAsyncThunk<IContacts[], void>(
 
 export const deleteContact = createAsyncThunk<void, string>(
     "contacts/deleteContact",
-    async contactId => {
+    async (contactId, { dispatch }) => {
         try {
             await deleteContactFirebase(contactId);
+            dispatch(removeContact(contactId));
         } catch (error) {
             throw error;
         }
@@ -79,12 +81,12 @@ export const ContactsSlice = createSlice({
         // addContact: (state, action: PayloadAction<IContacts>) => {
         //     state.contacts.push(action.payload);
         // },
-        // removeContact: (state, action: PayloadAction<string>) => {
-        //     const id = action.payload;
-        //     state.contacts = state.contacts.filter(
-        //         contact => contact.id !== id
-        //     );
-        // },
+        removeContact: (state, action: PayloadAction<string>) => {
+            const id = action.payload;
+            state.contacts = state.contacts.filter(
+                contact => contact.id !== id
+            );
+        }
         // updateContact: (state, action: PayloadAction<IContacts>) => {
         //     state.contacts = state.contacts.map(contact =>
         //         contact.id === action.payload.id
@@ -112,4 +114,4 @@ export const ContactsSlice = createSlice({
 });
 
 export default ContactsSlice.reducer;
-// export const {} = ContactsSlice.actions;
+export const { removeContact } = ContactsSlice.actions;
