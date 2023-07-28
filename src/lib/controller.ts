@@ -13,8 +13,21 @@ import { IContacts } from "../store/features/contactsSlice";
 import { app } from "./firebase";
 
 export const firestore = getFirestore(app);
+export const COLLECTION_NAME = "contacts";
+export const contactsCollection = collection(firestore, COLLECTION_NAME);
 
-export const contactsCollection = collection(firestore, "contacts");
+export const getContacts = async () => {
+    const querySnapshot = await getDocs(collection(firestore, COLLECTION_NAME));
+    const data = querySnapshot.docs.map(doc => doc.data()) as Record<
+        string,
+        any
+    >;
+    const contacts = Object.keys(data).map((contactId: string) => ({
+        id: contactId,
+        ...data[contactId]
+    }));
+    return contacts;
+};
 
 export const addContactFirebase = async (contactData: IContacts) => {
     await addDoc(contactsCollection, { ...contactData });
