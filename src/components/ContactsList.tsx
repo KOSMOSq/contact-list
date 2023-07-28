@@ -1,41 +1,29 @@
-import { onSnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { contactsCollection, deleteContactFirebase } from "../lib/controller";
-import { IContacts, removeContact } from "../store/features/contactsSlice";
+import { deleteContactFirebase } from "../lib/controller";
+import { deleteContact, fetchContacts } from "../store/features/contactsSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
+import LoadingWrapper from "./LoadingWrapper";
 
 const ContactsList: React.FC = () => {
-    const contacts = useAppSelector(state => state.contacts.contacts);
-    const [contact, setContact] = useState<IContacts[]>([]);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const contacts = useAppSelector(state => state.contacts.contacts);
     useEffect(() => {
-        onSnapshot(contactsCollection, snapshot => {
-            setContact(
-                snapshot.docs.map(doc => {
-                    const data = doc.data();
-                    return {
-                        id: data.id,
-                        name: data.name,
-                        mail: data.mail
-                    };
-                })
-            );
-        });
-    }, []);
+        dispatch(fetchContacts());
+    }, [dispatch]);
 
     return (
-        <>
+        <LoadingWrapper>
             <h1>My Address Book</h1>
-            {contact.map(contact => (
+            {contacts.map(contact => (
                 <div key={contact.id}>
                     <h3>Name: {contact.name}</h3>
                     <h4>Mail: {contact.mail}</h4>
                     <button
                         onClick={() => {
                             deleteContactFirebase(contact.id);
-                            dispatch(removeContact(contact.id));
+                            dispatch(deleteContact(contact.id));
                         }}
                     >
                         DELETE
@@ -47,7 +35,7 @@ const ContactsList: React.FC = () => {
                 </div>
             ))}
             <button onClick={() => navigate("/add")}>+</button>
-        </>
+        </LoadingWrapper>
     );
 };
 

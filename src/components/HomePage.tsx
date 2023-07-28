@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
     return (
