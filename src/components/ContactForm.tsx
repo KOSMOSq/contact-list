@@ -1,5 +1,6 @@
 import { useFormData } from "../shared/useFormData";
 import { IContacts } from "../store/features/contactsSlice";
+import LoadingWrapper from "./LoadingWrapper";
 
 interface IContactFormProps {
     initialValues: IContacts;
@@ -21,9 +22,11 @@ const ContactForm: React.FC<IContactFormProps> = ({
         onSubmit(formData);
     };
     return (
-        <>
+        <LoadingWrapper>
             <form onSubmit={handleSubmit}>
-                <h1>{headerText}</h1>
+                <h1 className="text-center font-bold py-10 text-2xl">
+                    {headerText}
+                </h1>
                 <label htmlFor="name">Name</label>
                 <input
                     type="text"
@@ -42,9 +45,11 @@ const ContactForm: React.FC<IContactFormProps> = ({
                     required
                     onChange={e => changeFormData(e)}
                 />
-                <button>{buttonText}</button>
+                <button className="bg-yellow-300 my-10 p-1 rounded hover:dark:bg-yellow-400 text-xl">
+                    {buttonText}
+                </button>
             </form>
-        </>
+        </LoadingWrapper>
     );
 };
 

@@ -15,9 +15,11 @@ const ContactsList: React.FC = () => {
 
     return (
         <LoadingWrapper>
-            <h1>My Address Book</h1>
+            <h1 className="text-center font-bold py-10 text-2xl">
+                My Address Book
+            </h1>
             {contacts.map(contact => (
-                <div key={contact.id}>
+                <div className="border p-1" key={contact.id}>
                     <h3>Name: {contact.name}</h3>
                     <h4>Mail: {contact.mail}</h4>
                     <button
@@ -25,16 +27,24 @@ const ContactsList: React.FC = () => {
                             deleteContactFirebase(contact.id);
                             dispatch(deleteContact(contact.id));
                         }}
+                        className="bg-yellow-300 mx-1 p-1 rounded hover:dark:bg-yellow-400 text-xl"
                     >
                         DELETE
                     </button>
-                    <button onClick={() => navigate(`/edit/${contact.id}`)}>
+                    <button
+                        onClick={() => navigate(`/edit/${contact.id}`)}
+                        className="bg-yellow-300 p-1 rounded hover:dark:bg-yellow-400 text-xl"
+                    >
                         EDIT
                     </button>
-                    <hr />
                 </div>
             ))}
-            <button onClick={() => navigate("/add")}>+</button>
+            <button
+                onClick={() => navigate("/add")}
+                className="bg-yellow-300 p-1 rounded hover:dark:bg-yellow-400 text-xl mt-5"
+            >
+                +
+            </button>
         </LoadingWrapper>
     );
 };
