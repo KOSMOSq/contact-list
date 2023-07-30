@@ -1,5 +1,5 @@
 [![Vercel Deployment](https://img.shields.io/badge/Vercel_Main-Deployed-brightgreen)](https://contact-list-kosmosq.vercel.app/)
-[![Vercel Deployment](https://img.shields.io/badge/Vercel_Dev-Deployed-brightgreen)]([https://contact-list-kosmosq.vercel.app/](https://contact-list-git-dev-kosmosq.vercel.app/))
+[![Vercel Deployment](https://img.shields.io/badge/Vercel_Dev-Deployed-brightgreen)](https://contact-list-git-dev-kosmosq.vercel.app/)
 ![Pending Pull-Requests](https://img.shields.io/github/issues-pr/KOSMOSq/contact-list)
 
 # Contact List
