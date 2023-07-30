@@ -28,7 +28,7 @@ const EditForm: React.FC = () => {
         <>
             <ContactForm
                 initialValues={contact as IContacts}
-                headerText="Edit contact form"
+                headerText="Edit contact 📝"
                 buttonText="Edit contact!"
                 onSubmit={handleEditSubmit}
             />

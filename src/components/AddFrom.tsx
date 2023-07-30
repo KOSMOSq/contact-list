@@ -18,7 +18,7 @@ const AddForm: React.FC = () => {
         <>
             <ContactForm
                 initialValues={{ id: "", name: "", mail: "" }}
-                headerText="Add contact form"
+                headerText="Add contact 📝"
                 buttonText="Add contact!"
                 onSubmit={handleAddSubmit}
             />
