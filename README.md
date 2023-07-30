@@ -1,18 +1,51 @@
+[![Vercel Deployment](https://img.shields.io/badge/Vercel_Main-Deployed-brightgreen)](https://contact-list-kosmosq.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel_Dev-Deployed-brightgreen)]([https://contact-list-kosmosq.vercel.app/](https://contact-list-git-dev-kosmosq.vercel.app/))
+![Pending Pull-Requests](https://img.shields.io/github/issues-pr/KOSMOSq/contact-list)
+
+# Contact List
+
+This is a simple contact storage app built with React, Redux Toolkit, and Firebase(for the backend), allowing users to create, edit and remove notes. The app features a user-friendly interface for interacting with contacts comfortably and efficiently. Firebase has also been added to ensure stable data storage without automatically syncing remote data changes.
+
+## Implemented Features
+
+-   Add a new contact with name and mail
+-   Edit existing contacts
+-   Remove contacts
+
+## Technologies Used
+
+-   React
+-   Redux Toolkit
+-   Typescript
+-   Firebase
+-   Tailwind CSS (Responsive Layout)
+
+## Usage
+-   To start using the app, on the welcome page click the "Lets start!".
+-   To create a new contact, click the "+" button and fill in the inputs. Then click "Add contact!" to add the contact.
+-   To edit a contact, click the "Pen on paper svg" button next to the contact you want to modify. Make the changes and click "Edit contact!" to update the contact.
+-   To remove a contact, click the "Trash can svg" button next to the contact you want to delete.
+
+## Contributing
+
+Contributions are welcome! If you find a bug or have an idea for an enhancement, feel free to contact me.
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Follow the steps below to run the app locally:\
+Clone the repository:
+### `git clone https://github.com/KOSMOSq/contact-list`
 
-## Available Scripts
+Navigate to the project directory:
+### `cd contact-list`
 
-In the project directory, you can run:
+Install the dependencies:
+### `npm i`
 
+Start the development server:
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Launches the server at localhost with port 3000.\
+The app will be running at http://localhost:3000 in your browser.
 
 ### `npm test`
 
@@ -39,8 +72,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
