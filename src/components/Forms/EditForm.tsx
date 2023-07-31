@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { IContacts, updateContact } from "../store/features/contactsSlice";
+import { IContacts, updateContact } from "../../store/features/contactsSlice";
 import {
     selectContactById,
     useAppDispatch,
     useAppSelector
-} from "../store/store";
+} from "../../store/store";
 import ContactForm from "./ContactForm";
 
 const EditForm: React.FC = () => {

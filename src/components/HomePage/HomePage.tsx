@@ -3,7 +3,7 @@ const HomePage: React.FC = () => {
     const navigate = useNavigate();
     return (
         <>
-            <div className="flex flex-col justify-center items-center h-screen rounded">
+            <div className="flex flex-col justify-center items-center h-screen rounded bg-gray-100">
                 <div className="container mx-auto p-4 max-w-5xl flex flex-col bg-red-50 py-10">
                     <h1 className="text-center font-bold text-2xl">
                         Contact List

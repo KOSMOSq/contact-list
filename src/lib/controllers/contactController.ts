@@ -9,8 +9,8 @@ import {
     updateDoc,
     where
 } from "firebase/firestore";
-import { IContacts } from "../store/features/contactsSlice";
-import { app } from "./firebase";
+import { IContacts } from "../../store/features/contactsSlice";
+import { app } from "../firebase";
 
 export const firestore = getFirestore(app);
 export const COLLECTION_NAME = "contacts";
