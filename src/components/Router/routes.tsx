@@ -1,8 +1,8 @@
 import { RouteObject } from "react-router";
-import AddForm from "../AddFrom";
-import ContactsList from "../ContactsList";
-import EditForm from "../EditForm";
-import HomePage from "../HomePage";
+import ContactsList from "../ContactsPage/ContactsPage";
+import AddForm from "../Forms/AddFrom";
+import EditForm from "../Forms/EditForm";
+import HomePage from "../HomePage/HomePage";
 
 export const routes: RouteObject[] = [
     {

@@ -1,4 +1,4 @@
-import ContactsList from "./components/ContactsList";
+import ContactsList from "./components/ContactsPage/ContactsPage";
 
 const App: React.FC = () => {
     return (

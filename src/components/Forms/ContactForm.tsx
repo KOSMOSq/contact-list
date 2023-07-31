@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useFormData } from "../shared/useFormData";
-import { IContacts } from "../store/features/contactsSlice";
-import LoadingWrapper from "./LoadingWrapper";
+import { useFormData } from "../../shared/hooks/useFormData";
+import { IContacts } from "../../store/features/contactsSlice";
+import LoadingWrapper from "../Wrapper/LoadingWrapper";
 
 interface IContactFormProps {
     initialValues: IContacts;
@@ -54,7 +54,7 @@ const ContactForm: React.FC<IContactFormProps> = ({
                         </svg>
                     </button>
 
-                    <label className="text-xl pl-4" htmlFor="name">
+                    <label className="text-xl pl-2 pb-2" htmlFor="name">
                         Name
                     </label>
                     <input
@@ -67,7 +67,7 @@ const ContactForm: React.FC<IContactFormProps> = ({
                         required
                         onChange={e => changeFormData(e)}
                     />
-                    <label className="text-xl pl-4" htmlFor="mail">
+                    <label className="text-xl pl-2 pb-2" htmlFor="mail">
                         Mail
                     </label>
                     <input
