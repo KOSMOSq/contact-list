@@ -55,6 +55,7 @@ const ContactsList: React.FC = () => {
                     {contactList.length ? (
                         contactList.map(contact => (
                             <Contact
+                                key={contact.id}
                                 contact={contact}
                                 onDelete={handleDelete}
                                 onEdit={handleEdit}
