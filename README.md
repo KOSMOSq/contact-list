@@ -11,6 +11,8 @@ This is a simple contact storage app built with React, Redux Toolkit, and Fireba
 -   Add a new contact with name and mail
 -   Edit existing contacts
 -   Remove contacts
+-   Smart search
+-   Modul confirmation window
 
 ## Technologies Used
 
@@ -24,7 +26,8 @@ This is a simple contact storage app built with React, Redux Toolkit, and Fireba
 -   To start using the app, on the welcome page click the "Lets start!".
 -   To create a new contact, click the "+" button and fill in the inputs. Then click "Add contact!" to add the contact.
 -   To edit a contact, click the "Pen on paper svg" button next to the contact you want to modify. Make the changes and click "Edit contact!" to update the contact.
--   To remove a contact, click the "Trash can svg" button next to the contact you want to delete.
+-   To remove a contact, click the "Trash can svg" button next to the contact you want to delete and confirm your action in Module Window.
+-   To find a contact, click the "Search for contact" input and write some text. 
 
 ## Contributing
 
