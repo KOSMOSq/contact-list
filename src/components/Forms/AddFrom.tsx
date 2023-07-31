@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { generateUniqueId } from "../shared/generateIdFunc";
-import { IContacts, addContact } from "../store/features/contactsSlice";
-import { useAppDispatch } from "../store/store";
+import { generateUniqueId } from "../../shared/functions/generateIdFunc";
+import { IContacts, addContact } from "../../store/features/contactsSlice";
+import { useAppDispatch } from "../../store/store";
 import ContactForm from "./ContactForm";
 
 const AddForm: React.FC = () => {

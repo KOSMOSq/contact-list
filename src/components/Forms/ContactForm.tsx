@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useFormData } from "../shared/useFormData";
-import { IContacts } from "../store/features/contactsSlice";
-import LoadingWrapper from "./LoadingWrapper";
+import BackIcon from "../../icons/BackIcon";
+import { useFormData } from "../../shared/hooks/useFormData";
+import { IContacts } from "../../store/features/contactsSlice";
+import LoadingWrapper from "../Wrapper/LoadingWrapper";
 
 interface IContactFormProps {
     initialValues: IContacts;
@@ -38,23 +39,10 @@ const ContactForm: React.FC<IContactFormProps> = ({
                         className="self-end w-1 pr-5 text-slate-950 hover:text-slate-600"
                         onClick={handleBack}
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
+                        <BackIcon />
                     </button>
 
-                    <label className="text-xl pl-4" htmlFor="name">
+                    <label className="text-xl pl-2 pb-2" htmlFor="name">
                         Name
                     </label>
                     <input
@@ -67,7 +55,7 @@ const ContactForm: React.FC<IContactFormProps> = ({
                         required
                         onChange={e => changeFormData(e)}
                     />
-                    <label className="text-xl pl-4" htmlFor="mail">
+                    <label className="text-xl pl-2 pb-2" htmlFor="mail">
                         Mail
                     </label>
                     <input

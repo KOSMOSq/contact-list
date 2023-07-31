@@ -9,7 +9,7 @@ import {
     deleteContactFirebase,
     getContacts,
     updateContactById
-} from "../../lib/controller";
+} from "../../lib/controllers/contactController";
 
 export interface IContacts {
     id: string;
