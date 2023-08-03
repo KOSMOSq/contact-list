@@ -1,9 +1,9 @@
 export interface IModalProps {
     setIsOpen: (isOpen: boolean) => void;
-    onConfirm: (id: string) => void;
-    id: string;
+    id?: string;
+    onConfirm: ((args?: any) => void) | ((id?: string) => void);
     headerText: string;
-    activeButton: "Delete" | "Cancel";
+    activeButton: "Delete" | "Confirm";
 }
 
 const Modal: React.FC<IModalProps> = ({
@@ -26,9 +26,9 @@ const Modal: React.FC<IModalProps> = ({
                 <div className="flex justify-center space-x-10">
                     <button
                         onClick={() => {
-                            activeButton === "Delete"
+                            activeButton === "Delete" && id
                                 ? onConfirm(id)
-                                : setIsOpen(false);
+                                : onConfirm();
                             setIsOpen(false);
                         }}
                         className="mt-4 bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded"
