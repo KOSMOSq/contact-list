@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../../icons/BackIcon";
 import { useFormData } from "../../shared/hooks/useFormData";
 import { IContacts } from "../../store/features/contactsSlice";
+import Modal from "../Modal/Modal";
 import LoadingWrapper from "../Wrapper/LoadingWrapper";
 
 interface IContactFormProps {
@@ -18,6 +20,7 @@ const ContactForm: React.FC<IContactFormProps> = ({
     onSubmit
 }) => {
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const [formData, changeFormData] = useFormData<IContacts>(initialValues);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,14 +33,17 @@ const ContactForm: React.FC<IContactFormProps> = ({
 
     return (
         <LoadingWrapper>
+            <h1 className="text-center font-bold pb-10 text-2xl">
+                {headerText}
+            </h1>
             <form onSubmit={handleSubmit}>
-                <h1 className="text-center font-bold pb-10 text-2xl">
-                    {headerText}
-                </h1>
                 <div className="flex flex-col w-[30rem] bg-white p-4 rounded-lg overflow-auto pb-10">
                     <button
                         className="self-end w-1 pr-5 text-slate-950 hover:text-slate-600"
-                        onClick={handleBack}
+                        onClick={e => {
+                            e.preventDefault();
+                            setIsOpen(true);
+                        }}
                     >
                         <BackIcon />
                     </button>
@@ -73,6 +79,15 @@ const ContactForm: React.FC<IContactFormProps> = ({
                     </button>
                 </div>
             </form>
+            {isOpen && (
+                <Modal
+                    key={initialValues.id}
+                    setIsOpen={setIsOpen}
+                    onConfirm={handleBack}
+                    headerText="Do you wish to cancel without submitting the form?"
+                    activeButton="Confirm"
+                />
+            )}
         </LoadingWrapper>
     );
 };
