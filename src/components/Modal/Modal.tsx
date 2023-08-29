@@ -15,7 +15,7 @@ const Modal: React.FC<IModalProps> = ({
 }) => {
     return (
         <div
-            className={` absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center h-screen w-screen`}
+            className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center h-screen w-screen"
             onClick={() => setIsOpen(false)}
         >
             <div
