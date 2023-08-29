@@ -3,6 +3,7 @@ import {
     createAsyncThunk,
     createSlice
 } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import {
     addContactFirebase,
     deleteContactFirebase,
@@ -91,16 +92,48 @@ export const ContactsSlice = createSlice({
                     (action.payload as SerializedError)?.message ||
                     "Unknown error";
             })
+            .addCase(addContact.fulfilled, _ => {
+                toast.success("Contact added!", {
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light"
+                });
+            })
             .addCase(deleteContact.fulfilled, (state, action) => {
                 state.contacts = state.contacts.filter(
                     contact => contact.id !== action.meta.arg
                 );
+                toast.success("Contact deleted!", {
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light"
+                });
             })
             .addCase(updateContact.fulfilled, (state, action) => {
                 const { contactId, updatedContact } = action.meta.arg;
                 state.contacts = state.contacts.map(contact =>
                     contact.id === contactId ? updatedContact : contact
                 );
+                toast.success("Contact updated!", {
+                    position: "bottom-left",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light"
+                });
             });
     }
 });
